@@ -1,0 +1,44 @@
+name: Publish to GitHub Packages
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        required: true
+        type: string
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+          bundler-cache: true
+
+      - name: Build gem
+        run: gem build money-fluence-exchange.gemspec
+
+      - name: Configure gem credentials
+        run: |
+          mkdir -p ~/.gem
+          cat > ~/.gem/credentials << EOF
+          ---
+          :github: Bearer ${{ secrets.GITHUB_TOKEN }}
+          EOF
+          chmod 0600 ~/.gem/credentials
+
+      - name: Push to GitHub Packages
+        run: gem push --key github --host https://rubygems.pkg.github.com/fluence-eu money-fluence-exchange-*.gem
+
+      - name: Attach gem to release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release upload ${{ inputs.tag }} money-fluence-exchange-*.gem --clobber
