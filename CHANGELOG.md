@@ -1,5 +1,14 @@
 ## [Unreleased]
 
+## [0.1.1] - 2026-01-06
+
+### Fixed
+
+- Rename VERSION to API_VERSION to avoid conflict with gem version constant
+- Fix Configuration mixin: use extend for class methods instead of include
+- Fix superclass mismatch TypeError for class Ovh
+- Add textris gem as runtime dependency
+
 ## [0.1.0] - 2026-01-05
 
 - Initial release of textris-delivery-ovh
