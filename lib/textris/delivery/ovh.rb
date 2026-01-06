@@ -28,7 +28,7 @@ module Textris
     #
     # @see https://api.ovh.com/console/#/sms OVH SMS API Documentation
     class Ovh < Base
-      include Configuration
+      extend Configuration
 
       require 'digest'
       require 'faraday'
