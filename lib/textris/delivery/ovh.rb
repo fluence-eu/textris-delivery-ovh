@@ -38,7 +38,7 @@ module Textris
       API_URL = 'https://eu.api.ovh.com'
 
       # @return [String] API version used for requests
-      VERSION = '1.0'
+      API_VERSION = '1.0'
 
       # Delivers an SMS message to the specified phone number.
       #
@@ -86,7 +86,7 @@ module Textris
           'X-Ovh-Timestamp' => timestamp,
           'Content-Type' => 'application/json'
         }
-        response = conn.run_request(params[:method], "/#{VERSION}/#{path}", query, headers)
+        response = conn.run_request(params[:method], "/#{API_VERSION}/#{path}", query, headers)
 
         JSON.parse(response.body)
       end
@@ -114,12 +114,12 @@ module Textris
       # @option params [String] :query The JSON-encoded request body
       # @return [Array<String, String>] The signature and timestamp
       def signature_timestamp(params = {})
-        timestamp = conn.get("/#{VERSION}/auth/time").body
+        timestamp = conn.get("/#{API_VERSION}/auth/time").body
         pre_hash_signature = [
           application_secret,
           consumer_key,
           params[:method],
-          "#{API_URL}/#{VERSION}/#{params[:url]}",
+          "#{API_URL}/#{API_VERSION}/#{params[:url]}",
           params[:query],
           timestamp
         ].join('+')
