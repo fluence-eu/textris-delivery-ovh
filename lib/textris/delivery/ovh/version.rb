@@ -4,5 +4,5 @@ module TextrisDeliveryOvh
   # Current version of the textris-delivery-ovh gem.
   #
   # @return [String] Semantic version string
-  VERSION = '0.1.2'
+  VERSION = '0.1.3'
 end

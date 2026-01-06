@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [0.1.3] - 2026-01-06
+
 ### Fixed
 
 - Add nokogiri version constraint to fix CI build on Ruby 3.1+ (net/ftp removed from stdlib)
