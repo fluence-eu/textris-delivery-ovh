@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require 'textris/delivery/base'
+
 module Textris
   module Delivery
-    class Ovh
+    class Ovh < Base
       # Configuration module for OVH SMS API credentials.
       #
       # This module provides accessors for the OVH API authentication

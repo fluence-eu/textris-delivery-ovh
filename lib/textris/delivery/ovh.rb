@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'textris/delivery/base'
 require_relative 'ovh/configuration'
 
 module Textris
