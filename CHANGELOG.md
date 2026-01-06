@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [0.1.2] - 2026-01-06
+
+### Fixed
+
+- Fix gemspec loading by removing textris dependency from version file
+
 ## [0.1.1] - 2026-01-06
 
 ### Fixed
