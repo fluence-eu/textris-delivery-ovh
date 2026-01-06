@@ -4,7 +4,7 @@ require_relative 'lib/textris/delivery/ovh/version'
 
 Gem::Specification.new do |spec|
   spec.name = 'textris-delivery-ovh'
-  spec.version = Textris::Delivery::Ovh::VERSION
+  spec.version = TextrisDeliveryOvh::VERSION
   spec.authors = ['Jonathan PHILIPPE']
   spec.email = ['jphilippe@fluence.eu']
 
