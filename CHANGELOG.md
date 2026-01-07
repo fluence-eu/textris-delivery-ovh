@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [0.1.4] - 2026-01-07
+
 ### Fixed
 
 - Fix configuration method calls in instance methods by using explicit `self.class.` prefix
