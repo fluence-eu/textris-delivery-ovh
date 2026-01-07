@@ -80,8 +80,8 @@ module Textris
           query: query
         )
         headers = {
-          'X-Ovh-Application' => application_key,
-          'X-Ovh-Consumer' => consumer_key,
+          'X-Ovh-Application' => self.class.application_key,
+          'X-Ovh-Consumer' => self.class.consumer_key,
           'X-Ovh-Signature' => signature,
           'X-Ovh-Timestamp' => timestamp,
           'Content-Type' => 'application/json'
@@ -100,7 +100,7 @@ module Textris
       # @option message [Boolean] :noStopClause Whether to omit STOP clause
       # @return [Hash] The parsed JSON response from OVH
       def send_sms(message = {})
-        query("sms/#{service_name}/jobs", method: :post, query: message)
+        query("sms/#{self.class.service_name}/jobs", method: :post, query: message)
       end
 
       # Generates the OVH API signature and retrieves the server timestamp.
@@ -116,8 +116,8 @@ module Textris
       def signature_timestamp(params = {})
         timestamp = conn.get("/#{API_VERSION}/auth/time").body
         pre_hash_signature = [
-          application_secret,
-          consumer_key,
+          self.class.application_secret,
+          self.class.consumer_key,
           params[:method],
           "#{API_URL}/#{API_VERSION}/#{params[:url]}",
           params[:query],
